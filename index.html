@@ -6,62 +6,164 @@
 <title>Artificial Intelligence & Computer Science</title>
 <style>
 /* ---------------- GENERAL ---------------- */
-body{margin:0;font-family:'Segoe UI',sans-serif;background:#0a0f1f;color:#e0e0e0;overflow-x:hidden;}
-a{color:#38bdf8;text-decoration:none;}a:hover{color:#00ffd5;}
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:#0a0f1f;
+  color:#e0e0e0;
+  overflow-x:hidden;
+}
+a{color:#38bdf8;text-decoration:none;}
+a:hover{color:#00ffd5;}
 h1,h2,h3{color:#00ffd5;}
 p{line-height:1.8;margin-bottom:20px;}
-header{position:relative;text-align:center;padding:120px 20px;
-background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-url('https://s10251.pcdn.co/wp-content/uploads/2024/04/2024-humanoids-viz-mv3-1024x493.jpeg');
-background-size:cover;background-position:center;overflow:hidden;border-bottom:2px solid #38bdf8;}
-header h1{font-size:3.5em;text-shadow:0 0 25px #38bdf8;position:relative;z-index:2;}
-header p{max-width:1100px;margin:auto;font-size:1.2em;position:relative;z-index:2;}
+
+/* ---------------- HEADER ---------------- */
+header {
+  position: relative;
+  text-align: center;
+  padding: 120px 20px;
+  background: linear-gradient(135deg, #0a0f1f 0%, #111827 50%, #1c1f2a 100%);
+  overflow: hidden;
+  border-bottom: 2px solid #38bdf8;
+}
+
+/* Subtle animated radial glow behind header text */
+header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15), transparent 60%);
+  animation: rotateGlow 15s linear infinite;
+  z-index: 1;
+}
+@keyframes rotateGlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+header h1 {
+  font-size: 3.5em;
+  text-shadow: 0 0 25px #38bdf8;
+  position: relative;
+  z-index: 2;
+}
+header p {
+  max-width: 1100px;
+  margin: auto;
+  font-size: 1.2em;
+  position: relative;
+  z-index: 2;
+}
 
 /* ---------------- NAVBAR ---------------- */
-nav{position:sticky;top:0;background:#0a0f1f;display:flex;flex-wrap:wrap;justify-content:center;padding:15px;box-shadow:0 2px 15px rgba(56,189,248,0.3);z-index:1000;}
-nav a{color:white;margin:8px 14px;font-weight:bold;transition:0.3s;}
+nav{
+  position:sticky;
+  top:0;
+  background:#0a0f1f;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  padding:15px;
+  box-shadow:0 2px 15px rgba(56,189,248,0.3);
+  z-index:1000;
+}
+nav a{
+  color:white;
+  margin:8px 14px;
+  font-weight:bold;
+  transition:0.3s;
+}
 nav a:hover{color:#00ffd5;}
 
 /* ---------------- CARDS ---------------- */
-.card{background:rgba(15,25,45,0.95);padding:35px;margin:30px 20px;border-radius:20px;box-shadow:0 0 45px rgba(56,189,248,0.5);transition:0.4s;}
+.card{
+  background:rgba(15,25,45,0.95);
+  padding:35px;
+  margin:30px 20px;
+  border-radius:20px;
+  box-shadow:0 0 45px rgba(56,189,248,0.5);
+  transition:0.4s;
+}
 .card:hover{transform:scale(1.02);}
 
 /* ---------------- IMAGES ---------------- */
-img{max-width:300px;border-radius:12px;display:inline-block;margin:10px;}
+img{
+  max-width:300px;
+  border-radius:12px;
+  display:inline-block;
+  margin:10px;
+}
 
 /* ---------------- BUTTONS ---------------- */
-button{padding:14px 28px;border:none;background:linear-gradient(90deg,#38bdf8,#00ffd5);color:#0a0f1f;border-radius:12px;cursor:pointer;font-weight:bold;margin:10px 5px;transition:0.3s;}
-button:hover{background:linear-gradient(90deg,#00ffd5,#38bdf8);}
+button{
+  padding:14px 28px;
+  border:none;
+  background:linear-gradient(90deg,#38bdf8,#00ffd5);
+  color:#0a0f1f;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:bold;
+  margin:10px 5px;
+  transition:0.3s;
+}
+button:hover{
+  background:linear-gradient(90deg,#00ffd5,#38bdf8);
+}
 
 /* ---------------- QUIZ ---------------- */
-.quiz input{padding:14px;width:95%;font-size:17px;border-radius:12px;border:2px solid #38bdf8;margin-bottom:15px;}
+.quiz input{
+  padding:14px;
+  width:95%;
+  font-size:17px;
+  border-radius:12px;
+  border:2px solid #38bdf8;
+  margin-bottom:15px;
+}
 
 /* ---------------- CHATBOX ---------------- */
-.chatbox{background:#111827;padding:20px;border-radius:12px;height:300px;overflow-y:auto;margin-bottom:10px;border:2px solid #38bdf8;}
+.chatbox{
+  background:#111827;
+  padding:20px;
+  border-radius:12px;
+  height:300px;
+  overflow-y:auto;
+  margin-bottom:10px;
+  border:2px solid #38bdf8;
+}
 
 /* ---------------- 3D BACKGROUND ---------------- */
-#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+#bgCanvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
 </style>
 </head>
 <body>
-
 <canvas id="bgCanvas"></canvas>
 
 <header>
-<h1>Artificial Intelligence & Computer Science</h1>
-<p>Explore the amazing world of Artificial Intelligence (AI), humanoid robots, cloud computing, and computer science. This website features in-depth articles, interactive games, quizzes, videos, and a chatbot to engage learners in a fun and immersive experience. AI is transforming every industry, and understanding its impact is key to the future.</p>
+  <h1>Artificial Intelligence & Computer Science</h1>
+  <p>Explore the amazing world of Artificial Intelligence (AI), humanoid robots, cloud computing, and computer science. This website features in-depth articles, interactive games, quizzes, videos, and a chatbot to engage learners in a fun and immersive experience. AI is transforming every industry, and understanding its impact is key to the future.</p>
 </header>
 
 <nav>
-<a href="#about">About</a>
-<a href="#robots">Humanoid Robots</a>
-<a href="#game">AI Game</a>
-<a href="#videos">Videos</a>
-<a href="#quiz">Quiz</a>
-<a href="#healthcare">Healthcare</a>
-<a href="#cloud">Cloud</a>
-<a href="#chatbot">Chatbot</a>
-<a href="#conclusion">Conclusion</a>
+  <a href="#about">About</a>
+  <a href="#robots">Humanoid Robots</a>
+  <a href="#game">AI Game</a>
+  <a href="#videos">Videos</a>
+  <a href="#quiz">Quiz</a>
+  <a href="#healthcare">Healthcare</a>
+  <a href="#cloud">Cloud</a>
+  <a href="#chatbot">Chatbot</a>
+  <a href="#conclusion">Conclusion</a>
 </nav>
 
 <!-- ABOUT AI -->
@@ -70,17 +172,8 @@ button:hover{background:linear-gradient(90deg,#00ffd5,#38bdf8);}
 <h2>Artificial Intelligence: Transforming the Way We Live and Work</h2>
 <p>Artificial Intelligence (AI) is no longer a futuristic idea—it is an evolving reality reshaping the way humans interact with technology, making our lives smarter, more efficient, and more connected. AI allows machines to perform tasks traditionally requiring human intelligence, including problem-solving, reasoning, learning from data, and decision-making. Today, AI impacts almost every industry, from healthcare and finance to transportation and entertainment, enabling unprecedented capabilities and efficiency.</p>
 <p><b>What Is AI?</b> AI is a field of computer science aimed at creating intelligent systems capable of perceiving, interpreting, and responding to complex data. AI systems analyze massive amounts of information, recognize patterns, and perform tasks without constant human guidance. This encompasses technologies like chatbots, virtual assistants, autonomous vehicles, and recommendation engines.</p>
-<p><b>Key Types of AI:</b> <br>
-1. Narrow AI (Weak AI): Performs specific tasks such as facial recognition, language translation, or predictive analytics. <br>
-2. General AI (Strong AI): A theoretical AI capable of performing any intellectual task a human can, still under research. <br>
-3. Machine Learning: Enables systems to learn from historical data, improving accuracy over time. <br>
-4. Deep Learning: A sophisticated form of ML using artificial neural networks, allowing AI to process complex visual, textual, and audio information with near-human accuracy.</p>
-<p><b>Applications Across Industries:</b> AI revolutionizes multiple sectors: <br>
-- Healthcare: AI diagnoses diseases, analyzes medical scans, predicts treatment outcomes, assists in drug discovery, and personalizes patient care. <br>
-- Finance: Detects fraud, assesses risks, predicts market trends, and improves decision-making. <br>
-- Retail: Optimizes supply chains, recommends products, and personalizes shopping experiences. <br>
-- Transportation: Powers autonomous vehicles, smart traffic management, and predictive maintenance. <br>
-- Education: Facilitates adaptive learning, virtual tutors, and AI-driven content creation.</p>
+<p><b>Key Types of AI:</b> <br> 1. Narrow AI (Weak AI): Performs specific tasks such as facial recognition, language translation, or predictive analytics. <br> 2. General AI (Strong AI): A theoretical AI capable of performing any intellectual task a human can, still under research. <br> 3. Machine Learning: Enables systems to learn from historical data, improving accuracy over time. <br> 4. Deep Learning: A sophisticated form of ML using artificial neural networks, allowing AI to process complex visual, textual, and audio information with near-human accuracy.</p>
+<p><b>Applications Across Industries:</b> AI revolutionizes multiple sectors: <br> - Healthcare: AI diagnoses diseases, analyzes medical scans, predicts treatment outcomes, assists in drug discovery, and personalizes patient care. <br> - Finance: Detects fraud, assesses risks, predicts market trends, and improves decision-making. <br> - Retail: Optimizes supply chains, recommends products, and personalizes shopping experiences. <br> - Transportation: Powers autonomous vehicles, smart traffic management, and predictive maintenance. <br> - Education: Facilitates adaptive learning, virtual tutors, and AI-driven content creation.</p>
 <p><b>The Future of AI:</b> AI will continue to evolve with autonomous systems, advanced robotics, personalized AI companions, and AI-driven scientific discoveries. Ethical AI and human-centric design will be crucial to harness its full potential responsibly.</p>
 </div>
 </section>
@@ -96,9 +189,9 @@ button:hover{background:linear-gradient(90deg,#00ffd5,#38bdf8);}
 <p><b>Cognitive Abilities:</b> Recognition of objects, speech understanding, learning, and adapting to surroundings.</p>
 <p><b>Emotional Intelligence:</b> Some humanoids detect human emotions and respond appropriately to improve social engagement.</p>
 <h3>Applications Across Industries</h3>
-<p><b>Healthcare:</b> Assist in surgeries, physical therapy, and support elderly/disabled individuals. <br>
-<b>Customer Service:</b> Greet and guide visitors in hotels, airports, and stores. <br>
-<b>Education:</b> Teach coding, languages, STEM interactively. <br>
+<p><b>Healthcare:</b> Assist in surgeries, physical therapy, and support elderly/disabled individuals. <br> 
+<b>Customer Service:</b> Greet and guide visitors in hotels, airports, and stores. <br> 
+<b>Education:</b> Teach coding, languages, STEM interactively. <br> 
 <b>Research & Exploration:</b> Operate in hazardous environments, deep-sea exploration, and space missions.</p>
 <h3>The Future of Humanoid Robotics</h3>
 <p>Humanoids will become increasingly autonomous, collaborative, and empathetic, assisting humans in diverse fields while learning and evolving to better understand human needs.</p>
@@ -157,14 +250,14 @@ button:hover{background:linear-gradient(90deg,#00ffd5,#38bdf8);}
 <h3>What is Cloud Computing?</h3>
 <p>Cloud computing allows access to servers, storage, databases, networking, software, and analytics over the internet, removing reliance on local servers. Individuals and businesses can rent computing power on demand, making it scalable, flexible, and cost-efficient.</p>
 <h3>Key Benefits of Cloud Computing</h3>
-<p><b>Cost Efficiency:</b> Pay only for resources used; no expensive hardware required. <br>
-<b>Scalability:</b> Automatically scale resources to handle traffic or workload changes. <br>
-<b>Accessibility:</b> Access data and applications anytime, anywhere. <br>
-<b>Reliability & Security:</b> Multiple data centers, backup, disaster recovery, and high availability. <br>
+<p><b>Cost Efficiency:</b> Pay only for resources used; no expensive hardware required. <br> 
+<b>Scalability:</b> Automatically scale resources to handle traffic or workload changes. <br> 
+<b>Accessibility:</b> Access data and applications anytime, anywhere. <br> 
+<b>Reliability & Security:</b> Multiple data centers, backup, disaster recovery, and high availability. <br> 
 <b>Automatic Updates:</b> Cloud providers manage software and security updates automatically.</p>
 <h3>Types of Cloud Services</h3>
-<p><b>IaaS:</b> Rent virtual servers and storage. <br>
-<b>PaaS:</b> Provides environment to develop, test, and deploy apps. <br>
+<p><b>IaaS:</b> Rent virtual servers and storage. <br> 
+<b>PaaS:</b> Provides environment to develop, test, and deploy apps. <br> 
 <b>SaaS:</b> Use software online like email, CRM, or productivity tools.</p>
 <h3>Why Use Cloud Computing?</h3>
 <p>Cloud computing ensures fast, secure, and scalable websites, apps, and services. It supports businesses of all sizes, from startups to enterprises, enabling cost-effective expansion, flexibility, collaboration, and continuous innovation. It powers e-commerce, analytics, AI applications, and more.</p>
@@ -185,16 +278,11 @@ button:hover{background:linear-gradient(90deg,#00ffd5,#38bdf8);}
 <section id="conclusion">
 <div class="card">
 <h2>Conclusion</h2>
-<p>Artificial Intelligence, humanoid robots, and cloud computing are transforming the world at an unprecedented pace. AI allows machines to analyze massive datasets, make predictions, automate tasks, and even perform creative work. Humanoid robots are bridging the gap between humans and machines, assisting in education, healthcare, exploration, and daily life, while cloud computing provides the scalable, secure infrastructure necessary to run these complex systems efficiently. </p>
-
+<p>Artificial Intelligence, humanoid robots, and cloud computing are transforming the world at an unprecedented pace. AI allows machines to analyze massive datasets, make predictions, automate tasks, and even perform creative work. Humanoid robots are bridging the gap between humans and machines, assisting in education, healthcare, exploration, and daily life, while cloud computing provides the scalable, secure infrastructure necessary to run these complex systems efficiently.</p>
 <p>The integration of AI into industries such as healthcare has improved diagnostics, personalized treatment plans, and medical research capabilities. In finance, AI helps detect fraud, optimize investments, and provide real-time market insights. In education, AI-powered adaptive learning platforms tailor content to individual student needs, enhancing learning outcomes. Autonomous vehicles, smart cities, and advanced robotics show how AI and cloud computing together are revolutionizing transportation, urban planning, and human productivity.</p>
-
 <p>Moreover, the ethical use of AI, data privacy, and responsible design are critical to ensure these technologies benefit society without unintended harm. Interactive elements like games, quizzes, and chatbots enable learners to engage with these concepts actively, making complex ideas more accessible and fostering curiosity and creativity.</p>
-
 <p>Looking ahead, AI will continue to evolve toward more generalized intelligence, humanoid robots will become more autonomous and socially aware, and cloud computing will provide increasingly robust, scalable platforms for innovation. The combination of these technologies promises a future where humans and machines collaborate seamlessly, solving global challenges, enhancing efficiency, and creating new opportunities for education, research, and industry.</p>
-
 <p>By exploring and understanding these technologies today, we equip ourselves for a future where AI, robotics, and cloud computing drive sustainable development, scientific discovery, and social progress. The knowledge gained from interactive learning, critical thinking, and responsible innovation will empower the next generation to harness the full potential of AI and related technologies ethically and effectively.</p>
-
 <p><b>Developer:</b> Ujjwal Poudyal | <b>Email:</b> ujjwalpoudyal07@gmail.com</p>
 </div>
 </section>
@@ -207,89 +295,96 @@ canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 let cubes=[];
 for(let i=0;i<60;i++){
-    cubes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,z:Math.random()*500+100,size:Math.random()*20+10,speed:Math.random()*0.5+0.2});
+  cubes.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    z:Math.random()*500+100,
+    size:Math.random()*20+10,
+    speed:Math.random()*0.5+0.2
+  });
 }
 function draw(){
-    ctx.fillStyle="#0a0f1f";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-    cubes.forEach(c=>{
-        c.z-=c.speed*5;
-        if(c.z<1)c.z=500;
-        let scale=500/c.z;
-        let x=c.x*scale+canvas.width/2-c.size/2;
-        let y=c.y*scale+canvas.height/2-c.size/2;
-        ctx.fillStyle="rgba(56,189,248,0.5)";
-        ctx.fillRect(x,y,c.size*scale,c.size*scale);
-    });
-    requestAnimationFrame(draw);
+  ctx.fillStyle="#0a0f1f";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  cubes.forEach(c=>{
+    c.z-=c.speed*5;
+    if(c.z<1)c.z=500;
+    let scale=500/c.z;
+    let x=c.x*scale+canvas.width/2-c.size/2;
+    let y=c.y*scale+canvas.height/2-c.size/2;
+    ctx.fillStyle="rgba(56,189,248,0.5)";
+    ctx.fillRect(x,y,c.size*scale,c.size*scale);
+  });
+  requestAnimationFrame(draw);
 }
 draw();
 
 /* ---------------- AI GAME 5 LEVELS ---------------- */
 let images=[
-    {url:"https://picsum.photos/300?random=1",type:"real"},
-    {url:"https://picsum.photos/300?random=2",type:"ai"},
-    {url:"https://picsum.photos/300?random=3",type:"real"},
-    {url:"https://picsum.photos/300?random=4",type:"ai"},
-    {url:"https://picsum.photos/300?random=5",type:"real"}
+  {url:"https://picsum.photos/300?random=1",type:"real"},
+  {url:"https://picsum.photos/300?random=2",type:"ai"},
+  {url:"https://picsum.photos/300?random=3",type:"real"},
+  {url:"https://picsum.photos/300?random=4",type:"ai"},
+  {url:"https://picsum.photos/300?random=5",type:"real"}
 ];
 let level=1;
 function loadGame(){
-    if(level<=5){
-        let img=document.getElementById("gameImage");
-        img.src=images[level-1].url;
-        document.getElementById("gameResult").innerText="";
-        document.getElementById("gameLevel").innerText="Level: "+level+"/5";
-    } else {
-        document.getElementById("gameResult").innerText="Game Finished! Thanks for playing.";
-        document.getElementById("gameImage").style.display="none";
-        document.getElementById("gameLevel").innerText="";
-    }
+  if(level<=5){
+    let img=document.getElementById("gameImage");
+    img.src=images[level-1].url;
+    document.getElementById("gameResult").innerText="";
+    document.getElementById("gameLevel").innerText="Level: "+level+"/5";
+  } else {
+    document.getElementById("gameResult").innerText="Game Finished! Thanks for playing.";
+    document.getElementById("gameImage").style.display="none";
+    document.getElementById("gameLevel").innerText="";
+  }
 }
 function guess(ans){
-    if(level>5) return;
-    let img=images[level-1];
-    document.getElementById("gameResult").innerText=ans===img.type?"Correct!":"Wrong!";
-    level++;
-    setTimeout(loadGame,400);
+  if(level>5) return;
+  let img=images[level-1];
+  document.getElementById("gameResult").innerText=ans===img.type?"Correct!":"Wrong!";
+  level++;
+  setTimeout(loadGame,400);
 }
 loadGame();
 
 /* ---------------- QUIZ ---------------- */
 const questions=[
-["What does AI stand for?","Artificial Intelligence"],
-["Who proposed the Turing Test?","Alan Turing"],
-["AI that learns from data?","Machine Learning"],
-["Subfield for language understanding?","NLP"]
+  ["What does AI stand for?","Artificial Intelligence"],
+  ["Who proposed the Turing Test?","Alan Turing"],
+  ["AI that learns from data?","Machine Learning"],
+  ["Subfield for language understanding?","NLP"]
 ];
 let html="";
-questions.forEach((q,i)=>{html+=`<p>${q[0]}</p><input id='q${i}'><br>`;});
+questions.forEach((q,i)=>{
+  html+=`<p>${q[0]}</p><input id='q${i}'><br>`;
+});
 document.getElementById("quizContainer").innerHTML=html;
 function submitQuiz(){
-    let score=0;
-    questions.forEach((q,i)=>{
-        let ans=document.getElementById("q"+i).value.toLowerCase();
-        if(ans.includes(questions[i][1].toLowerCase())) score++;
-    });
-    document.getElementById("score").innerText="Score: "+score+"/"+questions.length;
+  let score=0;
+  questions.forEach((q,i)=>{
+    let ans=document.getElementById("q"+i).value.toLowerCase();
+    if(ans.includes(questions[i][1].toLowerCase())) score++;
+  });
+  document.getElementById("score").innerText="Score: "+score+"/"+questions.length;
 }
 
 /* ---------------- CHATBOT ---------------- */
 function chat(){
-    let input=document.getElementById("userInput").value.toLowerCase();
-    let chatbox=document.getElementById("chat");
-    chatbox.innerHTML+="<p><b>You:</b> "+input+"</p>";
-    let response="I can answer questions about AI, Cloud computing, and Robots!";
-    if(input.includes("ai")) response="AI stands for Artificial Intelligence, machines performing human-like tasks.";
-    if(input.includes("machine learning")) response="Machine Learning allows computers to learn from data without explicit programming.";
-    if(input.includes("cloud")) response="Cloud computing provides scalable and flexible online resources for computing, storage, and software.";
-    if(input.includes("hello")||input.includes("hi")) response="Hi! How can I help you today?";
-    if(input.includes("game")) response="The AI Game challenges you to identify real vs AI generated images!";
-    chatbox.innerHTML+="<p><b>Friday:</b> "+response+"</p>";
-    document.getElementById("userInput").value="";
-    chatbox.scrollTop=chatbox.scrollHeight;
+  let input=document.getElementById("userInput").value.toLowerCase();
+  let chatbox=document.getElementById("chat");
+  chatbox.innerHTML+="<p><b>You:</b> "+input+"</p>";
+  let response="I can answer questions about AI, Cloud computing, and Robots!";
+  if(input.includes("ai")) response="AI stands for Artificial Intelligence, machines performing human-like tasks.";
+  if(input.includes("machine learning")) response="Machine Learning allows computers to learn from data without explicit programming.";
+  if(input.includes("cloud")) response="Cloud computing provides scalable and flexible online resources for computing, storage, and software.";
+  if(input.includes("hello")||input.includes("hi")) response="Hi! How can I help you today?";
+  if(input.includes("game")) response="The AI Game challenges you to identify real vs AI generated images!";
+  chatbox.innerHTML+="<p><b>Friday:</b> "+response+"</p>";
+  document.getElementById("userInput").value="";
+  chatbox.scrollTop=chatbox.scrollHeight;
 }
 </script>
-
 </body>
 </html>
